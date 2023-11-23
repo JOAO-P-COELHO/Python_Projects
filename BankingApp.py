@@ -1,0 +1,43 @@
+# Banking App - Final project
+
+while True:
+    transaction = open("transaction_history.txt", "a")
+    
+    class Banking_App:
+        def __init__(self, initial_amount=0.00):
+            initial_amount = 0.00
+            initial_amout = initial_amount - self.withdrawl() + self.deposit()
+            return initial_amount
+                        
+        def withdrawl(self):
+                withdrawl_value = input("What it's the value? (Use CTRL+C to stop this loop) ")
+                withdrawl_value = int(withdrawl_value)
+                transaction.write(f"The withdrawl value is: {withdrawl_value}$\n")
+                
+                return withdrawl_value
+        
+        def deposit(self):
+                deposit_value = input("What it's the value?  (Use CTRL+C to stop this loop) ")
+                deposit_value = int(deposit_value)
+                transaction.write(f"The deposit value is: {deposit_value}$\n")
+                
+                return deposit_value
+            
+        # Ele não atualiza o valor do initial_amount só com o return!
+
+    operation = input("What kind of operation you would like to do? Withdrawl or Deposit? ")
+    operation = operation.lower()
+    app = Banking_App()   
+
+    if operation == "withdrawl":
+        app.withdrawl()
+        transaction.write(f"O balanço é: {app.initial_amount}$\n")
+            
+    elif operation == "deposit":
+        app.__init__()
+        
+        transaction.write(f"O balanço é: {app.initial_amount}$\n")
+        
+    else:
+        print("You didn't choose a valid operation") 
+

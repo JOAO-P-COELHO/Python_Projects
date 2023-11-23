@@ -1,0 +1,14 @@
+The deposit value is: 200$
+O balanço é: 200.0$
+The deposit value is: 100$
+O balanço é: 100.0$
+The withdrawl value is: 10$
+O balanço é: -10.0$
+The deposit value is: 200$
+O balanço é: 200.0$
+The deposit value is: 2001$
+O balanço é: 2001.0$
+The withdrawl value is: 200$
+The deposit value is: 200$
+The withdrawl value is: 200$
+The deposit value is: 2001$
