@@ -4,10 +4,10 @@ while True:
     transaction = open("transaction_history.txt", "a")
     
     class Banking_App:
-        def __init__(self, initial_amount=0.00):
-            initial_amount = 0.00
-            initial_amout = initial_amount - self.withdrawl() + self.deposit()
-            return initial_amount
+        # def __init__(self, deposit_value):
+            # initial_amount = 0.00
+            # initial_amout = initial_amount + deposit_value
+            # return initial_amount
                         
         def withdrawl(self):
                 withdrawl_value = input("What it's the value? (Use CTRL+C to stop this loop) ")
@@ -25,18 +25,19 @@ while True:
             
         # Ele não atualiza o valor do initial_amount só com o return!
 
-    operation = input("What kind of operation you would like to do? Withdrawl or Deposit? ")
+    operation = input("What kind of operation you would like to do? Withdrawl (W) or Deposit?(D)  ")
     operation = operation.lower()
     app = Banking_App()   
 
-    if operation == "withdrawl":
+    if operation == "withdrawl" or operation =="w" :
         app.withdrawl()
-        transaction.write(f"O balanço é: {app.initial_amount}$\n")
+        # transaction.write(f"O balanço é: {app.initial_amount}$\n")
             
-    elif operation == "deposit":
-        app.__init__()
-        
-        transaction.write(f"O balanço é: {app.initial_amount}$\n")
+    elif operation == "deposit" or operation =="d":
+        pass
+        app.deposit()
+        # app.__init__(deposit_value)
+        # transaction.write(f"O balanço é: {}$\n")
         
     else:
         print("You didn't choose a valid operation") 
