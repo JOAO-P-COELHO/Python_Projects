@@ -4,16 +4,19 @@ while True:
     transaction = open("transaction_history.txt", "a")
     
     class Banking_App:
-        # def __init__(self, deposit_value):
-            # initial_amount = 0.00
-            # initial_amout = initial_amount + deposit_value
-            # return initial_amount
-                        
+               
+        def __init__(self, balance=0.00):
+            self.new_value = self.withdrawl
+            
+            
+                                    
         def withdrawl(self):
                 withdrawl_value = input("What it's the value? (Use CTRL+C to stop this loop) ")
                 withdrawl_value = int(withdrawl_value)
                 transaction.write(f"The withdrawl value is: {withdrawl_value}$\n")
                 
+                # transaction.write(f"Your balance is: {balance}$\n")
+                                
                 return withdrawl_value
         
         def deposit(self):
