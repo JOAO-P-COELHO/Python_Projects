@@ -1,2 +1,20 @@
 
 
+The deposit value is: 200.0$
+Your balance is now: 200.0$
+
+The deposit value is: 100.0$
+Your balance is now: 300.0$
+
+Value of your deposit: 200.0$
+Your balance is now: 200.0$
+
+Value of your deposit: 200.0$
+Your balance is now: 200.0$
+
+Value of withdrawl value:100.0$
+Your balance is now: 100.0$
+
+Value of withdrawl value:25.0$
+Your balance is now: 75.0$
+

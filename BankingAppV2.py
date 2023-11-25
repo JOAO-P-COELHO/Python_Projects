@@ -18,19 +18,19 @@ class Banking_App:
                 print("You didn't choose a valid operation")
 
     def deposit(self):
-        deposit_value = input("What it's the value? ")
+        deposit_value = input("\nWhat it's the value of your deposit? ")
         deposit_value = float(deposit_value)
         with open("transaction_history.txt", "a") as transaction:
-            transaction.write(f"The deposit value is: {deposit_value}$\n")
+            transaction.write(f"Value of your deposit: {deposit_value}$\n")
             self.balance_value += deposit_value
             transaction.write(f"Your balance is now: {self.balance_value}$\n\n")
             print(f"Your balance is now: {self.balance_value}$")    
                                            
     def withdrawl(self):
-        withdrawl_value = input("What it's the value? ")
+        withdrawl_value = input("\nWhat it's the value of your withdrawl? ")
         withdrawl_value = float(withdrawl_value)
         with open("transaction_history.txt", "a") as transaction:
-            transaction.write(f"The withdrawl value is: {withdrawl_value}$\n")
+            transaction.write(f"Value of withdrawl value:{withdrawl_value}$\n")
             self.balance_value -= withdrawl_value
             transaction.write(f"Your balance is now: {self.balance_value}$\n\n")
             print(f"Your balance is now: {self.balance_value}$") 
