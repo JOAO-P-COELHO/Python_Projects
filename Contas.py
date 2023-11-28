@@ -3,7 +3,7 @@ def arithmetic_arranger (array, show=False):
     while i < len(array):
         div=array[i]
         result = div.split(' ')
-        # print(result[0].rjust(5))
+
         print(f"{result[0].rjust(5)}")
         print(f"{result[1]} {result[2]}")
         print("-----")
