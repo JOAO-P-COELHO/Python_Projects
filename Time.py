@@ -1,4 +1,4 @@
-def add_time(start=None, duration=None, weekday=None): 
+def add_time(start, duration, weekday=None): 
     start_elements = start.split(' ')
     start_element_hour = start_elements[0].split(':')
     start_hours = int(start_element_hour[0])
@@ -13,6 +13,10 @@ def add_time(start=None, duration=None, weekday=None):
     days_after = 0
     rest_hours = 0
     count_minutes = start_minutes + duration_minutes
+    
+    if weekday != None:
+        weekday = weekday.lower()
+        weekday = weekday.capitalize()
     
     def truncate(number):
         return int(number * 10 ** 0) / 10 ** 0
@@ -29,8 +33,6 @@ def add_time(start=None, duration=None, weekday=None):
         return count_hours_12, fuse
     
     def counting_minutes(count_minutes, count_hours):
-        print("minutos tem de dar 63:",count_minutes)
-        print("horas tem de começar 11", count_hours)
         if count_minutes >= 60:
             count_hours = count_hours + 1
             count_minutes = count_minutes - 60
@@ -38,25 +40,39 @@ def add_time(start=None, duration=None, weekday=None):
         else:
             count_minutes = count_minutes
             count_hours = count_hours
-        print("minutres agora tem de dar 03:", count_minutes)   
-        print("count_hours tem de dar 12:", count_hours)
         return count_minutes, count_hours
     
+    
+    def day_of_week(day):
+        weekday = 0
+        if day == "Monday":
+            weekday = 1
+        elif day == "Tuesday":
+            weekday = 2
+        elif day == "Wednesday":
+            weekday = 3
+        elif day == "Thursday":
+            weekday = 4
+        elif day == "Friday":
+            weekday = 5
+        elif day == "Saturday":
+            weekday = 6
+        elif day == "Sunday":
+            weekday = 7 
+        
+        return weekday
+        
+    week = ["no day", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday","Sunday"]
+    
     days_after += truncate(duration_hours / 24)
-    print("days after:", days_after)
+
     rest_hours_of_day = (duration_hours / 24) - days_after
-    print("remaining of the day:", rest_hours_of_day)
+
     rest_hours += round(rest_hours_of_day * 24)
-    print("rest of day", rest_hours)
     count_hours = start_hours + rest_hours
-    print("count_hours:", count_hours)
     count_minutes, count_hours = counting_minutes(count_minutes, count_hours)
-    print("minutes: ", count_minutes)
-    print("hours: ", count_hours)
-    print("o fuso ainda deveria ser o mesmo:",fuse )
 
     if duration_hours >= 24:
-        
         if count_hours >= 12 and count_hours < 13 and fuse == "pm":
             count_hours = 12
             days_after += 1
@@ -65,7 +81,6 @@ def add_time(start=None, duration=None, weekday=None):
         elif count_hours >= 12 and count_hours < 13 and fuse == "am":
             count_hours = 12
             fuse = "pm" 
-            
             count_hours, fuse, days_after = hours_when_am(count_hours)
         
         elif count_hours >= 13 and fuse == "pm":
@@ -73,7 +88,6 @@ def add_time(start=None, duration=None, weekday=None):
         
         elif count_hours >= 13 and fuse == "am":
             count_hours, fuse, days_after = hours_when_am(count_hours)
-
             
     elif duration_hours < 24:
         if count_hours >= 12 and count_hours < 13 and fuse == "pm":
@@ -93,16 +107,38 @@ def add_time(start=None, duration=None, weekday=None):
 
 
     if days_after == 0:
-        print(f"{count_hours}:{count_minutes:02d} {fuse.upper()}")
+        if weekday == None:
+            print(f"{count_hours}:{count_minutes:02d} {fuse.upper()}")
+        elif weekday != None:
+            print(f"{count_hours}:{count_minutes:02d} {fuse.upper()}, {weekday}")   
     elif days_after == 1:
-        print(f"{count_hours}:{count_minutes:02d} {fuse.upper()} (next day)")
+        if weekday == None:
+            print(f"{count_hours}:{count_minutes:02d} {fuse.upper()} (next day)")
+        elif weekday != None:
+            tomorrow = day_of_week(weekday)
+            print(f"{count_hours}:{count_minutes:02d} {fuse.upper()}, {week[tomorrow+1]} (next day)")  
     elif days_after > 1:
-        print(f"{count_hours}:{count_minutes:02d} {fuse.upper()} ({int(days_after)} days later)")
+        if weekday == None:
+            print(f"{count_hours}:{count_minutes:02d} {fuse.upper()} ({int(days_after)} days later)")
+        elif weekday != None:
+            day = day_of_week(weekday)
+            print(day)
+            number_days_week = day / 7 
+            print(number_days_week)
+            number_weeks = truncate(number_days_week)
+            days_moving = round(((number_days_week) - number_weeks)*7)
+            print(days_moving)
+            actual_number = 2
 
-add_time("6:30 PM", "205:12")
+            if days_moving + actual_number > 7:
+                new_day = days_moving - (7-actual_number)
+            else:
+                new_day = days_moving + actual_number
+                week_day_final=week[new_day]
+                print(f"{count_hours}:{count_minutes:02d} {fuse.upper()}, {week_day_final} ({int(days_after)} days later)")
 
+ 
+add_time("8:16 PM", "466:02", "tuesday")
 
-# Quando o período de tempo a somar é superior a  24h há bug. Tem que se arranjar maneira dessas horas (por exemplo, 200 horas) se converterem em dias e o valor de horas restante ser somado
-# Guardar este código e usá-lo só para casos específicos - fica como projeto pouco dificil e pouco util
-# Resolver este problema usando antes uma conversão para as 24h    
-    
+# Project dificulty (out of 5): 4  
+# Time spent: xxx hours
