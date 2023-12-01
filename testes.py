@@ -1,13 +1,17 @@
-class MinhaClasse:
-    def metodo1(self):
-        # Faça algo no método1
-        self.resultado = 0.00
-        self.metodo2()
+def split(array):
+    result = array.split(' ')
+    return result
 
-    def metodo2(self):
-        # Faça algo no método2 com o valor armazenado em resultado
-        print(f'O valor recebido em metodo2 é: {self.resultado}')
+numbers = ["32 + 698", "3801 - 2"]
+resultado = list(map(split, numbers))
+print(resultado)
 
-# Uso da classe
-objeto = MinhaClasse()
-objeto.metodo1()
+n = len(resultado)
+
+a=0
+b=0
+
+while b<3:
+    print(resultado[0][b], end = " ")z
+    print(resultado[1][b], end = " ")
+    b+=1
