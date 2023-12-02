@@ -1,4 +1,6 @@
-def add_time(start, duration, weekday=None): 
+# READ ME available
+
+def add_time(start, duration, weekday=None): #1 - I take the parameters as strings and convert them in numbers
     start_elements = start.split(' ')
     start_element_hour = start_elements[0].split(':')
     start_hours = int(start_element_hour[0])
@@ -10,29 +12,29 @@ def add_time(start, duration, weekday=None):
     duration_hours = int(duration_elements[0])
     duration_minutes = int(duration_elements[1])
     
-    days_after = 0
+    days_after = 0 # Initialing variables
     rest_hours = 0
-    count_minutes = start_minutes + duration_minutes
+    count_minutes = start_minutes + duration_minutes #2 - Starting with the math
     
-    if weekday != None:
+    if weekday != None: #3 - If there is a weekday, I will transform it also
         weekday = weekday.lower()
         weekday = weekday.capitalize()
     
-    def truncate(number):
+    def truncate(number): #4 - Useful function to convert numbers like 10.42 in 10 (it always "round" it low)
         return int(number * 10 ** 0) / 10 ** 0
     
-    def hours_when_pm(count_hours, days_after=0):        
+    def hours_when_pm(count_hours, days_after=0): #5A - Functions that convert numbers to AM/PM 
         count_hours_12 = count_hours - 12
         fuse = "AM"
         days_after += 1
         return count_hours_12, fuse, days_after
 
-    def hours_when_am(count_hours):
+    def hours_when_am(count_hours): #5B - Functions that convert numbers to AM/PM 
         count_hours_12 = count_hours - 12
         fuse = "PM"
         return count_hours_12, fuse
     
-    def counting_minutes(count_minutes, count_hours):
+    def counting_minutes(count_minutes, count_hours): #6 - Function that converts minutes to hours
         if count_minutes >= 60:
             count_hours = count_hours + 1
             count_minutes = count_minutes - 60
@@ -43,7 +45,7 @@ def add_time(start, duration, weekday=None):
         return count_minutes, count_hours
     
     
-    def day_of_week(day):
+    def day_of_week(day): #7 - Function that converts weekdays to numbers (it will be useful later)
         weekday = 0
         if day == "Monday":
             weekday = 1
@@ -59,20 +61,18 @@ def add_time(start, duration, weekday=None):
             weekday = 6
         elif day == "Sunday":
             weekday = 7 
-        
         return weekday
         
-    week = ["no day", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday","Sunday"]
+    week = ["no day", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday","Sunday"] #8 - Array of the weekdays (it will be useful later)
     
-    days_after += truncate(duration_hours / 24)
-
+    days_after += truncate(duration_hours / 24) #9 - Start of the math to obtain the number of days later, if there is any
     rest_hours_of_day = (duration_hours / 24) - days_after
-
     rest_hours += round(rest_hours_of_day * 24)
     count_hours = start_hours + rest_hours
     count_minutes, count_hours = counting_minutes(count_minutes, count_hours)
 
-    if duration_hours >= 24:
+#10 - The number of hours controls the number of "days later"
+    if duration_hours >= 24: 
         if count_hours >= 12 and count_hours < 13 and fuse == "pm":
             count_hours = 12
             days_after += 1
@@ -106,6 +106,7 @@ def add_time(start, duration, weekday=None):
             count_hours, fuse = hours_when_am(count_hours)
 
 
+#11 - The number of days later controls the output
     if days_after == 0:
         if weekday == None:
             print(f"{count_hours}:{count_minutes:02d} {fuse.upper()}")
@@ -122,12 +123,9 @@ def add_time(start, duration, weekday=None):
             print(f"{count_hours}:{count_minutes:02d} {fuse.upper()} ({int(days_after)} days later)")
         elif weekday != None:
             day = day_of_week(weekday)
-            print(day)
             number_days_week = day / 7 
-            print(number_days_week)
             number_weeks = truncate(number_days_week)
             days_moving = round(((number_days_week) - number_weeks)*7)
-            print(days_moving)
             actual_number = 2
 
             if days_moving + actual_number > 7:
@@ -137,8 +135,12 @@ def add_time(start, duration, weekday=None):
                 week_day_final=week[new_day]
                 print(f"{count_hours}:{count_minutes:02d} {fuse.upper()}, {week_day_final} ({int(days_after)} days later)")
 
- 
-add_time("8:16 PM", "466:02", "tuesday")
 
-# Project dificulty (out of 5): 4  
-# Time spent: xxx hours
+#12 - Example of an input
+
+add_time("11:43 PM", "24:20", "tueSday") #add_time("Hours in AM/PM", number of hours and minutes, a starting weekday)
+# It returns: 12:03 AM, Thursday (2 days later)
+
+
+## Project dificulty (out of 5): 4  
+## Time spent: xxx hours
