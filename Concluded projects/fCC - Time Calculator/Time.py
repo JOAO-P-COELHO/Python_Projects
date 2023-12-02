@@ -144,4 +144,4 @@ add_time("8:16 PM", "466:02", "tuesday") #add_time("Hours in AM/PM", number of h
 
 ## Project dificulty (out of 5): 4  
 ## Time spent: ~9 hours
-## It passed all the 12 fCC tests
+## It passed all the 12 fCC's tests
