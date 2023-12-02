@@ -1,6 +1,6 @@
-# READ ME available
+# READ ME available in this folder
 
-def add_time(start, duration, weekday=None): #1 - I take the parameters as strings and convert them in numbers
+def add_time(start, duration, weekday=None): #0 - I take the parameters as strings and convert them in numbers
     start_elements = start.split(' ')
     start_element_hour = start_elements[0].split(':')
     start_hours = int(start_element_hour[0])
@@ -12,7 +12,7 @@ def add_time(start, duration, weekday=None): #1 - I take the parameters as strin
     duration_hours = int(duration_elements[0])
     duration_minutes = int(duration_elements[1])
     
-    days_after = 0 # Initialing variables
+    days_after = 0 #1 Initialing variables
     rest_hours = 0
     count_minutes = start_minutes + duration_minutes #2 - Starting with the math
     
@@ -123,24 +123,25 @@ def add_time(start, duration, weekday=None): #1 - I take the parameters as strin
             print(f"{count_hours}:{count_minutes:02d} {fuse.upper()} ({int(days_after)} days later)")
         elif weekday != None:
             day = day_of_week(weekday)
-            number_days_week = day / 7 
+            number_days_week = days_after / 7 
             number_weeks = truncate(number_days_week)
             days_moving = round(((number_days_week) - number_weeks)*7)
-            actual_number = 2
+            actual_number = day
 
             if days_moving + actual_number > 7:
                 new_day = days_moving - (7-actual_number)
+                week_day_final=week[new_day]
+                print(f"{count_hours}:{count_minutes:02d} {fuse.upper()}, {week_day_final} ({int(days_after)} days later)")
             else:
                 new_day = days_moving + actual_number
                 week_day_final=week[new_day]
                 print(f"{count_hours}:{count_minutes:02d} {fuse.upper()}, {week_day_final} ({int(days_after)} days later)")
 
 
-#12 - Example of an input
-
-add_time("11:43 PM", "24:20", "tueSday") #add_time("Hours in AM/PM", number of hours and minutes, a starting weekday)
+#12 - Example:
+add_time("8:16 PM", "466:02", "tuesday") #add_time("Hours in AM/PM", number of hours and minutes, a starting weekday)
 # It returns: 12:03 AM, Thursday (2 days later)
 
-
 ## Project dificulty (out of 5): 4  
-## Time spent: xxx hours
+## Time spent: ~9 hours
+## It passed all the 12 fCC tests
