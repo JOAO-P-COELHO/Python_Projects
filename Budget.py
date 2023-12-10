@@ -8,11 +8,6 @@ class Category:
         if ledger is None:
             self.ledger = [] # The class should have an instance variable called ledger that is a list. If none ledger exists, then it creates it.
 
-        word_len=len(category)
-        num_asterisks=int((30-word_len)/2)
-
-        print(num_asterisks * "*" + category + num_asterisks * "*" )
-
     def deposit(self, amount, description=""):
         self.ledger.append({"amount":amount , "description": description})
         self.balance += amount
@@ -29,7 +24,6 @@ class Category:
             return True
 
     def get_balance(self):
-        print(f"This is the balance of the {self.category} and it's {self.balance}")
         return self.balance
 
     def transfer(self, amount, category_destination, description=""):
@@ -47,9 +41,6 @@ class Category:
             
             self.balance -= amount
             category_destination.balance += amount
-            print(self.ledger)
-            print(self.balance)
-            print("isto", category_destination.balance)
 
         # If there are not enough funds, nothing should be added to either ledgers.
         # This method should return True if the transfer took place, and False otherwise.
@@ -60,9 +51,52 @@ class Category:
             return False
         if self.balance - amount >= 0.00:
             return True
+        
         # It returns False if the amount is greater than the balance of the budget category and returns True otherwise.
         # This method should be used by both the withdraw method and transfer method.
+        
+    # def __str__(self):
+    #     word_len=len(self.category)
+    #     num_asterisks=int((30-word_len)/2)
 
+    #     categoria = num_asterisks * "*" + self.category + num_asterisks * "*"
+    #     print1a = self.ledger[0]["description"][:23]
+    #     print1b = str(self.ledger[0]["amount"]) + ".00"
+    #     print2a = self.ledger[1]["description"][:23]
+    #     print2b = str(self.ledger[1]["amount"]) 
+    #     print3a = self.ledger[2]["description"][:23]
+    #     print3b = str(self.ledger[2]["amount"]) + ".00"
+    #     total = "Total: " + str(self.balance) 
+        
+        # # Not the right way to do! This should be done with a loop.
+        
+        # variable1 = categoria + "\n" + print1a + (23 - len(print1b))* " " + print1b
+        # variable2 = print2a + " " + print2b 
+        # variable3 = print3a + " " + print3b
+        # variablefinal = variable1 + "\n" + variable2 + "\n" + variable3 + "\n" + total
+        # # print(variablefinal)
+        # return variablefinal
+
+
+def create_spend_chart(categories): # takes a list of categories as an argument. It should return a string that is a bar chart.
+
+    # print("Percentage spent by category")
+    # percentage_array = ["100|","90|","80|","70|","60|","50|","40|", "30|", "20|", "10|", " 0|"]
+    # i = 0
+    # for element in percentage_array:
+        
+    #     print(percentage_array[i])
+    #     i = i +1
+    for category in categories:
+        category_name = str(category.category)
+        print(category_name)
+
+    for category in categories:
+        if hasattr(category, 'ledger') and category.ledger:
+            for entry in category.ledger:
+                if entry["amount"] < 0:
+                    print(entry)
+        
 
 # THIS HAS TO BE ALWAYS IN THE TESTS!!!!
 food = Category("Food")
@@ -70,36 +104,13 @@ entertainment = Category("Entertainment")
 business = Category("Business")
 
 food.deposit(900, "deposit")
-food.withdraw(45.67, "milk, cereal, eggs, bacon, bread")
+food.withdraw(105.55)
 
-food_balance_before = food.get_balance()
-print("aqui1",food_balance_before)
-entertainment_balance_before = entertainment.get_balance()
-good_transfer = food.transfer(20, entertainment)
-food_balance_after = food.get_balance()
-print("aqui2", food_balance_after)
-entertainment_balance_after = entertainment.get_balance()
-actual = food.ledger[2]
-print(actual)
+actual = create_spend_chart([business, food, entertainment])
 
 
+# entertainment.deposit(900, "deposit")
+# business.deposit(900, "deposit")
 
-
-# food.deposit(900, "deposit")
-# food.withdraw(45.67, "milk, cereal, eggs, bacon, bread")
-# food.transfer(20, entertainment)
-# actual = str(food)
-# print(actual)
-# print(f"*************Food*************\ndeposit                 900.00\nmilk, cereal, eggs, bac -45.67\nTransfer to Entertainme -20.00\nTotal: 834.33")
-
-
-def create_spend_chart(lista): # takes a list of categories as an argument. It should return a string that is a bar chart.
-    lists = lista
-    print("Percentage spent by category")
-    percentage_array = ["100|","90|","80|","70|","60|","50|","40|", "30|", "20|", "10|", " 0|"]
-    for element in percentage_array:
-        print(element)
-
-# create_spend_chart()
-
-# print(create_spend_chart([food, clothing, auto]))
+# entertainment.withdraw(33.40)
+# business.withdraw(10.99)
