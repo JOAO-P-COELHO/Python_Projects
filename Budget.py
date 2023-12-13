@@ -2,24 +2,24 @@ class Category:
 
     balance = 0.00 # This is a property. It starts as 0.00 and it's then updated, when methods are called
 
-    def __init__(self, category, ledger=None):
+    def __init__(self, category, ledger = None):
         self.category = category
 
         if ledger is None:
-            self.ledger = [] # The class should have an instance variable called ledger that is a list. If none ledger exists, then it creates it.
+            self.ledger = [] # The class should have an instance variable called ledger that is a list. If no ledger exists, then it creates it.
 
-    def deposit(self, amount, description=""):
+    def deposit(self, amount, description = ""):
         self.ledger.append({"amount":amount , "description": description})
         self.balance += amount
 
-    def withdraw(self, amount, description=""):
+    def withdraw(self, amount, description = ""):
         checking = self.check_funds(amount)
 
         if checking == False:
             return False
         else:
-            self.ledger.append({"amount":-amount , "description": description})
             short_description = description[:23] # It was part of the exercise reduce the numbers of characters until a maximum of 23
+            self.ledger.append({"amount":-amount , "description": short_description})
             self.balance -= amount
             return True
 
@@ -107,7 +107,7 @@ food.deposit(900, "deposit")
 food.withdraw(105.55)
 
 actual = create_spend_chart([business, food, entertainment])
-
+print("Percentage spent by category\n100|          \n 90|          \n 80|          \n 70|    o     \n 60|    o     \n 50|    o     \n 40|    o     \n 30|    o     \n 20|    o  o  \n 10|    o  o  \n  0| o  o  o  \n    ----------\n     B  F  E  \n     u  o  n  \n     s  o  t  \n     i  d  e  \n     n     r  \n     e     t  \n     s     a  \n     s     i  \n           n  \n           m  \n           e  \n           n  \n           t  ")
 
 # entertainment.deposit(900, "deposit")
 # business.deposit(900, "deposit")
