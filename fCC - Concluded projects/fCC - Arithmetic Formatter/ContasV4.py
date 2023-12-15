@@ -1,3 +1,5 @@
+# READ ME available in this folder
+
 def arithmetic_arranger (array, show=False):
     array_len = len(array)
     
