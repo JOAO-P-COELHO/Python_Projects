@@ -1,0 +1,44 @@
+Introduction:
+Students in primary school often arrange arithmetic problems vertically to make them easier to solve. For example, "235 + 52" becomes:
+  235
++  52
+-----
+
+Goals of this project:
+- Write a function that receives a list of strings that are arithmetic problems and returns the problems arranged vertically and side-by-side.
+- The function is named arithmetic_arrangere and takes two parameters: the list of strings, and optionally take a second argument. When the second argument is set to True, the answers should be displayed.
+
+Example:
+Function Call:
+arithmetic_arranger(["32 + 698", "3801 - 2", "45 + 43", "123 + 49"])
+
+Output:
+
+   32      3801      45      123
++ 698    -    2    + 43    +  49
+-----    ------    ----    -----
+
+Function Call:
+arithmetic_arranger(["32 + 8", "1 - 3801", "9999 + 9999", "523 - 49"], True)
+
+  32         1      9999      523
++  8    - 3801    + 9999    -  49
+----    ------    ------    -----
+  40     -3800     19998      474
+
+
+Rules:
+- This all done without any Python libraries. 
+- The limit of arithmetic problems is 5, otherwise it returns "Error: Too many problems."
+- The appropriate operators the function will accept are addition and subtraction, otherwise it returns "Error: Operator must be '+' or '-'."
+- Each number (operand) should only contain digits. Otherwise it retuns "Error: Numbers cannot be more than four digits."
+
+Formatting rules:
+- There should be a single space between the operator and the longest of the two operands, the operator will be on the same line as the second operand, both operands will be in the same order as provided (the first will be the top one and the second will be the bottom).
+- Numbers should be right-aligned.
+- There should be four spaces between each problem.
+- There should be dashes at the bottom of each problem. The dashes should run along the entire length of each problem individually. (The example above shows what this should look like.)
+
+## Project dificulty (out of 5): 4,5  
+## Time spent: ~12,8 hours
+## It passed all the 10 fCC's tests
