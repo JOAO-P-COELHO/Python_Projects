@@ -7,7 +7,7 @@ class Category:
 
         if ledger is None:
             self.ledger = [] # The class should have an instance variable called ledger that is a list. If no ledger exists, then it creates it.
-
+    
     def deposit(self, amount, description = ""):
         self.ledger.append({"amount":amount , "description": description})
         self.balance += amount
@@ -49,7 +49,7 @@ class Category:
         if self.balance - amount >= 0.00:
             return True
         
-        
+ #       
     # def __str__(self):
     #     word_len=len(self.category)
     #     num_asterisks=int((30-word_len)/2)
@@ -72,54 +72,108 @@ class Category:
         # # print(variablefinal)
         # return variablefinal
 
-
 def create_spend_chart(categories): # takes a list of categories as an argument. It should return a string that is a bar chart.
 
-    # print("Percentage spent by category")
-    # percentage_array = ["100|","90|","80|","70|","60|","50|","40|", "30|", "20|", "10|", " 0|"]
-    # i = 0
-    # for element in percentage_array:
-    #     print(percentage_array[i])
-    #     i = i +1
+    first_cat = 900 - business.get_balance()
+    second_cat = 900 - food.get_balance()
+    third_cat = 900 - entertainment.get_balance()
+    sum_cat = first_cat + second_cat + third_cat
+
+    first_cat_per = int(((first_cat / sum_cat)*100)/10) + 1
+    array_first =[]
+    number_of_spaces= 11 - first_cat_per
+    array_first.append(" " *number_of_spaces)
+    array_first.append("o" * first_cat_per)
     
-    for category in categories:
-        category_name = str(category.category) # São strings
-        isto = "".append(category_name)
-        print(isto)
+    resultList_first = []   
+    
+    # Traversing in till the length of the input list of lists
+    for m in range(len(array_first)):
+        # using nested for loop, traversing the inner lists
+        for n in range (len(array_first[m])):
+            # Add each element to the result list
+            resultList_first.append(array_first[m][n]) 
         
-        
-    i = 0
-    array_vazio = []
-    print(categories[0])
-    while i<len(categories):
-        print(array_vazio)
-        array_vazio.append(category_name)
-        i = i + 1
-        
+    second_cat_per = int(((second_cat / sum_cat)*100)/10) + 1
+    
+    array_second =[]
+    number_of_spaces= 11 - second_cat_per
+    
+    array_second.append(" " *number_of_spaces)
+    array_second.append("o" *second_cat_per)
+   
+    resultList_second = []
 
-        
-        # teste = len(categories)
-        # print(teste)
-        # category_name = str(category.category) # São strings
-        
-        # size = len(category_name) # a primeira size = 8, 4 e 13
-        
-        # i = 0
-        # while i<size:
-        #     # print(f"{category_name[i]}")
-        #     i = i + 1
+    # Traversing in till the length of the input list of lists
+    for m in range(len(array_second)):
+        # using nested for loop, traversing the inner lists
+        for n in range (len(array_second[m])):
+            # Add each element to the result list
+            resultList_second.append(array_second[m][n])
+            
+            
+    third_cat_per = int(((third_cat / sum_cat)*100)/10) + 1
+    
+    array_third =[]
+    number_of_spaces= 11 - third_cat_per
+    array_third.append(" " *number_of_spaces)
+    array_third.append("o" * third_cat_per)
+   
+    resultList_third = []
+    
 
+    # Traversing in till the length of the input list of lists
+    for m in range(len(array_third)):
+        # using nested for loop, traversing the inner lists
+        for n in range (len(array_third[m])):
+            # Add each element to the result list
+            resultList_third.append(array_third[m][n])
+     
+     
+    third_word= []
+    for element in entertainment.category:
+        third_word.append(element)  
+            
+    first_word= []
+    for element in business.category:
+        first_word.append(element)
+        dif_len=len(third_word)-len(first_word)
         
-        # lista = list(category_name)
-        # print (lista)
+    n=0 
+    while dif_len>n:                       
+        first_word.append(" ")
+        n = n + 1   
+    
+    
+    second_word= []
+    for element in food.category:
+        second_word.append(element)
+        dif_len=len(third_word)-len(second_word)
         
-        
+    n=0 
+    while dif_len>n:                       
+        second_word.append(" ")
+        n = n + 1  
+      
 
-    # for category in categories:
-    #     if hasattr(category, 'ledger') and category.ledger:
-    #         for entry in category.ledger:
-    #             if entry["amount"] < 0:
-    #                 print(entry)
+    
+    print(first_word)
+    print(second_word)
+    print(third_word)
+    
+    print("Percentage spent by category")
+    percentage_array = ["100|","90|","80|","70|","60|","50|","40|", "30|", "20|", "10|", " 0|"]
+    n=0
+    while n<11:
+        print(percentage_array[n].rjust(4),resultList_first[n], "",resultList_second[n],"", resultList_third[n])
+        n = n + 1
+    print("    ----------")
+    
+    n=0
+    while n < len(third_word):
+        print("    ",first_word[n],"",second_word[n],"", third_word[n])
+        n = n + 1
+        
         
 # THIS HAS TO BE ALWAYS IN THE TESTS!!!!
 food = Category("Food")
@@ -128,7 +182,12 @@ business = Category("Business")
 
 
 food.deposit(900, "deposit")
+entertainment.deposit(900, "deposit")
+business.deposit(900, "deposit")
+    
 food.withdraw(105.55)
+entertainment.withdraw(33.40)
+business.withdraw(10.99)
 
 actual = create_spend_chart([business, food, entertainment])
-# print("Percentage spent by category\n100|          \n 90|          \n 80|          \n 70|    o     \n 60|    o     \n 50|    o     \n 40|    o     \n 30|    o     \n 20|    o  o  \n 10|    o  o  \n  0| o  o  o  \n    ----------\n     B  F  E  \n     u  o  n  \n     s  o  t  \n     i  d  e  \n     n     r  \n     e     t  \n     s     a  \n     s     i  \n           n  \n           m  \n           e  \n           n  \n           t  ")
+print("Percentage spent by category\n100|          \n 90|          \n 80|          \n 70|    o     \n 60|    o     \n 50|    o     \n 40|    o     \n 30|    o     \n 20|    o  o  \n 10|    o  o  \n  0| o  o  o  \n    ----------\n     B  F  E  \n     u  o  n  \n     s  o  t  \n     i  d  e  \n     n     r  \n     e     t  \n     s     a  \n     s     i  \n           n  \n           m  \n           e  \n           n  \n           t  ")

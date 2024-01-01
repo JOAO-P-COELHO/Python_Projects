@@ -1,17 +1,17 @@
-def split(array):
-    result = array.split(' ')
-    return result
+# Python program to demonstrate 
+# selenium 
+  
+# import webdriver 
+from selenium import webdriver 
+import chromedriver_binary  # Adds chromedriver binary to path
 
-numbers = ["32 + 698", "3801 - 2"]
-resultado = list(map(split, numbers))
-print(resultado)
 
-n = len(resultado)
+# create webdriver object 
+driver = webdriver.Chrome()
+  
+# get python.org
+driver.get("http://www.python.org")
 
-a=0
-b=0
 
-while b<3:
-    print(resultado[0][b], end = " ")z
-    print(resultado[1][b], end = " ")
-    b+=1
+
+

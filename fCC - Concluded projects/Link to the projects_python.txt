@@ -1,11 +1,10 @@
-Random Quote Machine:
-https://mfr5lw.csb.app/
-https://codesandbox.io/p/sandbox/wonderful-sea-mfr5lw
+Time Calculator:
+- https://codesandbox.io/p/devbox/fcc-time-calculator-cxg5sg
 
-Drum Machine:
-https://97j6q4.csb.app/
-https://codesandbox.io/p/sandbox/machinedrum-97j6q4
+- Arithmetic Formatter:
+https://codesandbox.io/p/devbox/fcc-arithmetic-formatter-crv8m8
 
-Markdown Previewer:
-https://q9cwsg.csb.app/
-https://codesandbox.io/s/q9cwsg
+
+- Polygon Area Calculator:
+https://codesandbox.io/p/devbox/polygon-area-calculator-ylkhkt
+
