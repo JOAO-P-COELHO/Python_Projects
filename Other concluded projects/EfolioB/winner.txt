@@ -1,0 +1,6 @@
+ In the day 10-01-2024, at 18:09:32, 'blackplayer2' beat 'redplayer1'!
+ In the day 10-01-2024, at 18:10:54, 'redplayer1' beat 'blackplayer2'!
+ In the day 10-01-2024, at 18:12:18, 'blackplayer2' beat 'redplayer1'!
+ In the day 10-01-2024, at 19:34:07, 'Blacky Player 2' beat 'Red Player 1'!
+ In the day 11-01-2024, at 00:16:18, 'Player 2' beat 'Player 1'!
+ In the day 11-01-2024, at 00:22:10, 'Player 1' beat 'Player 2'!
