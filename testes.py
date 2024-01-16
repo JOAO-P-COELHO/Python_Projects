@@ -1,17 +1,11 @@
-# Python program to demonstrate 
-# selenium 
-  
-# import webdriver 
-from selenium import webdriver 
-import chromedriver_binary  # Adds chromedriver binary to path
+class Pessoa:
+    def __init__(self, nome, idade):
+        self.nome = nome
+        self.idade = idade
+
+    def apresentacao(self):
+        print(f"{self.nome} tem: {self.idade}")
 
 
-# create webdriver object 
-driver = webdriver.Chrome()
-  
-# get python.org
-driver.get("http://www.python.org")
-
-
-
-
+pessoa1 = Pessoa("João", 30)
+pessoa1.apresentacao()
