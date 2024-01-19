@@ -1,16 +1,18 @@
-def experiment(hat=0, expected_balls=0, num_balls_drawn=0, num_experiments=0): 
+red=2
+orange=0
+black=0
+blue=0
+pink=0
+striped=0
+green=0
+yellow=0
 
-    dict_to_list = []
+colors = [red, orange, black, blue, pink, striped, green, yellow]
+
+contents = []
+colors = [red, orange, black, blue, pink, striped, green, yellow]
+
+for color, count in zip(['red', 'orange', 'black', 'blue', 'pink', 'striped', 'green', 'yellow'], colors):
+    contents.extend([color] * count)
     
-    list_expected_balls = expected_balls
-    for element in list_expected_balls:
-        number_reps = list_expected_balls[element]
-        while number_reps > 0:
-            dict_to_list.append(element)
-            number_reps -= 1
-    
-    print(dict_to_list)
-        
-            
-            
-probability = experiment(expected_balls = {"red":2,"green":1})
+print(contents)

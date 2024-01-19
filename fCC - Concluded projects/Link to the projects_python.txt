@@ -8,3 +8,9 @@ https://codesandbox.io/p/devbox/fcc-arithmetic-formatter-crv8m8
 - Polygon Area Calculator:
 https://codesandbox.io/p/devbox/polygon-area-calculator-ylkhkt
 
+
+- Budget App:
+https://codesandbox.io/p/devbox/budget-app-h88g5p
+
+- Probability:
+https://codesandbox.io/p/devbox/probability-rvqcj8
