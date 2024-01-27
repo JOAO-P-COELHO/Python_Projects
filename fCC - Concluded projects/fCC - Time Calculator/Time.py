@@ -139,7 +139,7 @@ def add_time(start, duration, weekday=None): #0 - I take the parameters as strin
 
 
 #12 - Example:
-add_time("8:16 PM", "466:02", "tuesday") #add_time("Hours in AM/PM", number of hours and minutes, a starting weekday)
+add_time("1:16 PM", "23:02", "monday") #add_time("Hours in AM/PM", number of hours and minutes, a starting weekday)
 # It returns: 12:03 AM, Thursday (2 days later)
 
 ## Project dificulty (out of 5): 4  

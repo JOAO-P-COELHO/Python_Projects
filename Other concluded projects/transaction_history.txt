@@ -1,7 +1,9 @@
-Value of withdrawl value:200.0$
-Your balance is now: -200.0$
+Value of your deposit: 120.0$
+Your balance is now: 120.0$
 
-Value of withdrawl value:200.0$
-Your balance is now: -400.0$
+Value of your deposit: 1230.0$
+Your balance is now: 1350.0$
 
-The deposit value is: 200$
+Value of withdrawl value:10.0$
+Your balance is now: 1340.0$
+
